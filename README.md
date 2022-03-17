@@ -119,16 +119,24 @@ _ Answer the following questions to fill in the blanks:_
 
 - Which URL do you navigate to in order to check that the ELK server is running? http://20.225.56.168:5601/app/kibana, http://[your_elk_server_ip];5601/app/kibana  
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
+
 ⦁	run and copy the playbook: run curl https://github.com/loevans/Elk-Stack-Project/blob/main/Ansible/install-elk.yml > /etc/ansible/roles/install-elk-yml
-⦁	Update the hosts file: nano /etc/ansible/hosts and assign a [group] and updating your destination IP address. 
+
+⦁	Update the hosts file: nano /etc/ansible/hosts and assign a [group] and updating your destination IP address.
+
 ⦁	Run the playbook using the command: ansible-playbook /etc/ansible/roles/install-elk.yml
 ⦁	Check your installation is running by going to http://[your_elk_server_ip];5601/app/kibana in a browser. Your output should be similar to: 
 ![kibana](https://user-images.githubusercontent.com/93744925/158880291-30393591-5b2d-41d6-bdbe-409be5cae9aa.PNG)
+
 ⦁	Install Filbeats:	 Download the playbook with the following command: curl https://github.com/loevans/Elk-Stack-Project/blob/main/Ansible/filebeat-playbook.yml > /etc/ansible/roles/filebeat-playbook.yml
+
 ⦁	Run the playbook using the command: ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
+
 ⦁	Repeat these steps for Metricbeat setup. 
+
 ⦁	click on Getting started, click on DEB and then scroll down and click on Module status.  Click on System logs dhashboard and you should see the following information:
+
 ![kibana_system_log_data](https://user-images.githubusercontent.com/93744925/158880414-07d6ca44-0cbd-417c-9c88-7d6402c47c63.PNG)
 
 
