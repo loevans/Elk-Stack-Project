@@ -10,7 +10,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
   - [install-elk.yml](https://github.com/loevans/Elk-Stack-Project/Ansible/install-elk.yml.txt)
   - [filebeat-playbook.yml](https://github.com/loevans/Elk-Stack-Project/Ansible/filebeat-playbook.yml.txt)
   - [metricbeat-playbook.yml](https://github.com/loevans/Elk-Stack-Project/Ansible/metricbeat-playbook.yml.txt)
-  - [pentest.yml](https://github.com/loevans/Elk-Stack-Project/Ansible/pentest.yml.txt)
+ 
 
 This document contains the following details:
 - Description of the Topologu
