@@ -6,7 +6,11 @@ When is it appropriate to use containers in cloud deployments, and what are the 
 
 1. Restate the Problem
 
-It is appropropriate to use containers in cloud deployments when virtualization needs to be portable, effecient, flexible, faster in app startup, easier to manage, cost effective and improve security.  Containers are essentially "lightweight VMs".  They are smaller and use fewer resources, therefore, can be downloaded and distributed more easily.  Since they are most cost effective, more of them can be run. Also, containers are isolated from one another and running in their own self-contained environment. That means that even if the security of one container is compromised, other containers on the same host remain secure. For instance, containers eliminast the "but it works on my machine" problem when you are working on a piece of code in a small team.
+It is appropropriate to use containers in cloud deployments when virtualization needs to be portable, effecient, flexible, faster in app startup, easier to manage,
+cost effective and improve security.  Containers are essentially "lightweight VMs".  They are smaller and use fewer resources, therefore, can be downloaded and
+distributed more easily.  Since they are most cost effective, more of them can be run. Also, containers are isolated from one another and running in their own self-
+contained environment. That means that even if the security of one container is compromised, other containers on the same host remain secure. For instance, containers
+eliminast the "but it works on my machine" problem when you are working on a piece of code in a small team.
 
 2. Provide a Concrete Example Scenario
 
