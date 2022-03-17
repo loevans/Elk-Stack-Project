@@ -52,7 +52,7 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- Add whitelisted IP addresses: personal IP address 108.52.143.94
+- Add whitelisted IP addresses: 52.186.16.122
 
 Machines within the network can only be accessed by SSH by the Jump Box.
 - Which machine did you allow to access your ELK VM? Jump Box Provisioner
@@ -62,10 +62,10 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes                 | personal 108.52.143.94|
-| Web1     | No                  | 10.0.0.7              |
-| Web2     | No                  | 10.0.0.7              |
-| Elk      | No                  | 10.0.0.7              |
+| Jump Box | Yes                 | 52.186.16.122        |
+| Web1     | No                  |                      |
+| Web2     | No                  |                      |
+| Elk      | Yes                 | 20.225.56.168        |
 
 
 ### Elk Configuration
