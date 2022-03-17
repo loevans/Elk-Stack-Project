@@ -74,8 +74,7 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 - What is the main advantage of automating configuration with Ansible? The main advantage of automating configuration with Ansible is to simplify complex tasks that can be time consuming. Ansible is simple, powerful and agentless.
 
-The playbook implements the following tasks:
-- In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc.
+The playbook implements the following tasks: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc.
 - Install docker.io: Installs the core docker code to the remote server
 - Install python3-pip: pip is the standard packet management system for Python
 - Docker Module: Tells the previous PIP module to install the necessary docker compenent modules.
@@ -87,35 +86,35 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- List the IP addresses of the machines you are monitoring?
+
 -   10.0.0.8
 -   10.0.0.9
 -   10.1.0.5
 
 We have installed the following Beats on these machines:
-- Specify which Beats you successfully installed
+
 -	Filebeat
 -	Metricbeat
 
-
 These Beats allow us to collect the following information from each machine:
-- In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc. Filebeat collects log files and logs information including any changes made and when.  Any attack leaves a trace that can be followed and investigated using logs. Metricbeat collects machine metrics such as CPU or memeory or data related to services running on the server.
+
+- Filebeat collects log files and logs information including any changes made and when.  Any attack leaves a trace that can be followed and investigated using logs.
+- Metricbeat collects machine metrics such as CPU or memeory or data related to services running on the server.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the playbook file to /etc/ansible/roles.
-- Update the configuration /etc/ansible/files/filebeat-conf.yml file to include the private IP address of the Elk VM. Update the metricbeat configuration file with the same IP address of the ELK VM.
-
+- Copy the playbook file to /etc/ansible/roles/.
+- Update the configuration file /etc/ansible/files/filebeat-conf.yml file to include the private IP address of the Elk VM. Update the metricbeat configuration file with the same IP address of the ELK VM.
 - Run the playbook, and navigate to http://[your_elk_server_ip];5601/app/kibana to check that the installation worked as expected.
 
-_ Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Playbooks always carry the .yml extension and begin with --- on the first line to signify that it is a YAML file. Where do you copy it?
-- Copy the YAML file to /etc/ansible/roles/filebeat-playbook.yml
-- Copy the YAML file to /etc/ansible/roles/metricbeat-playbook.yml
+_ Answer the following questions to fill in the blanks:
+- Which file is the playbook? Playbooks always carry the .yml extension and begin with --- on the first line to signify that it is a YAML file.
+- Where do you copy it? Copy to /etc/ansible/roles/.
 
-- _Which file do you update to make Ansible run the playbook on a specific machine? You would update the /etc/ansible/hosts file. How do I specify which machine to install the ELK server on versus which to install Filebeat on? You would specify which machine to install by assigning a group [elk] or [webservers] and updating with IP addresses of webservers and elk servers to update the hosts file.
+- Which file do you update to make Ansible run the playbook on a specific machine? You would update the /etc/ansible/hosts file. How do I specify which machine to install the ELK server on versus which to install Filebeat on? You would specify which machine to install by assigning a group [elk] or [webservers] and updating with IP addresses of webservers and elk servers to update the hosts file.
+-![image](https://user-images.githubusercontent.com/93744925/158907013-a95f4e9f-fd44-4471-9105-d161bdc5ec47.png)
 
 - Which URL do you navigate to in order to check that the ELK server is running? http://20.225.56.168:5601/app/kibana, http://[your_elk_server_ip];5601/app/kibana  
 
