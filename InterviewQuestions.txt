@@ -10,13 +10,13 @@ It is appropropriate to use containers in cloud deployments when virtualization 
 cost effective and improve security.  Containers are essentially "lightweight VMs".  They are smaller and use fewer resources, therefore, can be downloaded and
 distributed more easily.  Since they are most cost effective, more of them can be run. Also, containers are isolated from one another and running in their own self-
 contained environment. That means that even if the security of one container is compromised, other containers on the same host remain secure. For instance, containers
-eliminast the "but it works on my machine" problem when you are working on a piece of code in a small team.
+eliminate the "but it works on my machine" problem when you are working on a piece of code in a small team.
 
 2. Provide a Concrete Example Scenario
 
-    - In Project 1, when did you use containers?
-Containers were used in Project 1 of my Cybersecurity boot camp upon completion of cloud lab resources setup in Azure. Containerization is more effecient because web
-servers share common resources like the OS kernel and core libraries, and are only individually responsible for maintaing data in their databases. I created a VNet
+    - In Project 1, when did you use ccontainers?
+Containers were used in Project 1 of my Cybersecurity boot camp upon completion of the cloud lab resources setup in Azure. Containerization is more effecient because
+web servers share common resources like the OS kernel and core libraries, and are only individually responsible for maintaing data in their databases. I created a VNet
 that holds my Jump Box VM and 2 Web VMs protected by a firewall that allows inbound SSH traffic to the Jump Box.  I configured the basic firewall Network Security
 Group (NSG) so it allows one IP address to open connections.  The Jump Box forces all traffic through a single node. It is exposed to the public internet and controls
 access to the other machines by allowing connections from specific IP addresses. Next, I used my Jump Box Provisioner to run Docker containers and to install a
@@ -26,48 +26,57 @@ to connect to the VM.
 
     - What did you use containers for?
 I used containers in my cloud network Project 1 to expedite and simplify the deployment of custom machines to a my network. Since containers are specialized, they only
-run the software componenets that they need to complete their task. I also deployed Ansible provisioner which eliminate human error in the configuration process. I
+run the software componenets that they need to complete their task. I also deployed Ansible provisioner which eliminates human error in the configuration process. I
 used the Jump Box to connect to a private Ansible, which I then used to configure DVWA servers and connect to DVWA service. I used Docker software to install and run
 my containers.  The Docker software package includes everything, ie. code, runtime, system tools, system libraries and settings.
 
 3. Explain the Solution Requirements
 
     - Why was this an appropriate use for containers?
-This was an appropriate use for containers because they are a relatively small size, fast, portable and self-suffecient. They’re built from images that include everything they need,and ideally, nothing else.  Docker allows you to run Linux containers on any server or local machine and they only run the resources necessary to complete their specific task.
+This was an appropriate use for containers because they are a relatively small size, fast, portable and self-suffecient. They’re built from images that include
+everything they need, and ideally, nothing else.  Docker allows you to run Linux containers on any server or local machine and they only run the resources necessary to
+complete their specific task.
 
     - What security benefits did you expect from using containers? 
-The security benefits I expect from using containers are a reduction in the container attack surface to the required interfaces and network connnections. It breaks the app into smaller parts. If the security of one part is compromised, the rest of them will not be affected. Containers share a kernel, so if one is compromised, others
-on that host may be in danger. Horizontal scaling makes the system more resilient. Instead of having a single point of failure, (one web server) we have multiple web
-server containers running, each taking different requests. If one of them fails, we can redirect requests to the other containers. If a container is compromised, we
-can tear it down and re-build it from scratch, while the other containers continue to function
+The security benefits I expected from using containers are a reduction in the container attack surface to the required interfaces and network connnections. It breaks
+the app into smaller parts. If the security of one part is compromised, the rest of them will not be affected. Containers share a kernel, so if one is compromised,
+others on that host may be in danger. Horizontal scaling makes the system more resilient. Instead of having a single point of failure, (one web server) we have
+multiple web server containers running, each taking different requests. If one of them fails, we can redirect requests to the other containers. If a container is
+compromised, we can tear it down and re-build it from scratch, while the other containers continue to function
 
 4. Explain the Solution Details
 
     - In Project 1, how did you configure VMs to be able to run containers?
-In Project 1 I configured the VMs to able to run containers with the Ansible provisioner.  Ansible usually needs a file full of commands called a 'playbook' in order to complete it's tasks.  I located the Ansible hosts file.  I uncommented the [webservers] header line and added the machine's internal IP address under
+In Project 1 I configured the VMs to able to run containers with the Ansible provisioner.  Ansible usually needs a file full of commands called a 'playbook' in order
+to complete it's tasks.  I located the Ansible hosts file.  I uncommented the [webservers] header line and added the machine's internal IP address under
 [webservers]and [elk] header and the python line besides each IP address.  Then I created and saved the Ansible configuration file at /etc/ansible/ by uncommenting
 remote_user and replacing it with my admin username azadmin, allowing me to use my administration account for SSH connections.
 
     - How did you select and install the correct container?
-After installing docker.io on the Jump Box, I used Docker commands to download a container images that were provided in my Project 1. I verified the docker service is running and used the pull command to download a container image cybersecurity/ansible.  I then launched the Ansible container and connected to it using the appropriate
+After installing docker.io on the Jump Box, I used Docker commands to download a container images that were provided in my Project 1. I verified the docker service is
+running and used the pull command to download a container image cybersecurity/ansible.  I then launched the Ansible container and connected to it using the appropriate
 Docker commands. <sudo docker run> command to start the container. You only need one <sudo docker run> command to launch a container to its command line. I added a new
 scurity rule to the Jump Box that allows full access from my VNet from my private IP address.
+
     - How did you verify that it was running correctly?
-I verified the container was running successfully by SSH to my container and run <sudo docker ps> to show all running containers
+I verified the container was running successfully by SSHing to my container and running <sudo docker ps> to show all running containers.
 
 5. Identify Advantages/Disadvantages of the Solution
 
     - How would you have achieved the same thing without containers? 
-Using containers instead of VMs to run a ELK server results in cost and operational savings by eliminating a large amount of file and CPU overhead. However, I could
+Using containers instead of VMs to run an ELK server results in cost and operational savings by eliminating a large amount of file and CPU overhead. However, I could
 have achieved the same set up by installing a database, installing a web server and back-end codebase, then properly configure for these items to work together. This
 can be a time consuming process.
+
     - What are the advantages to doing it without containers?
-The advantages of doing it without containers are if you need a boost in speed, if you need to use different operating systems or kernals or if you have a lot of
-valuable data to store. Security could also be a factor in determing a setup.  All containers share access to a single host OS and promise improved security,
-therefore, any malicious code can get access to your computer memeory. 
+There can be advantages of doing it without containers, foir example, if you need a boost in speed, if you need to use different operating systems or kernals or if you
+have a lot of valuable data to store. Security could also be a factor in determing a setup.  All containers share access to a single host OS and promise improved
+security, therefore, any malicious code can get access to your computer memeory. 
+
     - What are the disadvantages?
-VM's are large and take a long time to download and deploy, therefore, doing it without containers is a disadvatage.  Another disadvantege is the inability of the VM
-s to be application portable and to share common resources such as the OS kernel and core libraries. Containerization is a whole different approach to virtualization
+    
+VM's are large and take a long time to download and deploy, therefore, doing it without containers is a disadvatage.  Another disadvantege is the inability of the VMs
+to be application portable and to share common resources such as the OS kernel and core libraries. Containerization is a whole different approach to virtualization
 and results in much faster and more lightweight instances.
 
 ---
