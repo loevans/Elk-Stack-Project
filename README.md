@@ -54,7 +54,7 @@ The machines on the internal network are not exposed to the public Internet.
 Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
 - Add whitelisted IP addresses: 52.186.16.122
 
-Machines within the network can only be accessed by SSH by the Jump Box.
+Machines within the network can only be accessed by the Jump Box (SSH).
 - Which machine did you allow to access your ELK VM? Jump Box Provisioner
 - What was its IP address? 10.0.0.7
 
@@ -63,8 +63,8 @@ A summary of the access policies in place can be found in the table below.
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
 | Jump Box | Yes                 | 52.186.16.122        |
-| Web1     | No                  |                      |
-| Web2     | No                  |                      |
+| Web1     | No                  | 10.0.0.8             |
+| Web2     | No                  | 10.0.0.9             |
 | Elk      | Yes                 | 20.225.56.168        |
 
 
@@ -105,15 +105,23 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the playbook file to /etc/ansible/roles/.
-- Update the configuration file /etc/ansible/files/filebeat-conf.yml file to include the private IP address of the Elk VM. Update the metricbeat configuration file with the same IP address of the ELK VM.
+- Copy the provided configuration file for filebeat and metricbeat to the Ansible container.
+- Update the configuration file /etc/ansible/files/filebeat-conf.yml file to include the ELK server's IP address. 
 - Run the playbook, and navigate to http://[your_elk_server_ip];5601/app/kibana to check that the installation worked as expected.
 
-_ Answer the following questions to fill in the blanks:
+  - Verify that your playbook is completing Steps 1-4.
+  - On the same page, scroll to Step 5: Module Status and click Check Data.
+  - Scroll to the bottom and click on Verify Incoming Data.
+
+Answer the following questions to fill in the blanks:
 - Which file is the playbook? Playbooks always carry the .yml extension and begin with --- on the first line to signify that it is a YAML file.
-- Where do you copy it? Copy to /etc/ansible/roles/.
+  - filebeat-playbook.yml is located in /etc/ansible/roles/
+  - metricbeat-playbook.yml is located in /etc/ansible/roles/ 
+ 
+- Where do you copy it? Copy to /etc/ansible/files/filebeat-config.yml to /etc/filebeat/filebeat.yml
 
 - Which file do you update to make Ansible run the playbook on a specific machine? You would update the /etc/ansible/hosts file. How do I specify which machine to install the ELK server on versus which to install Filebeat on? You would specify which machine to install by assigning a group [elk] or [webservers] and updating with IP addresses of webservers and elk servers to update the hosts file.
+
 -![image](https://user-images.githubusercontent.com/93744925/158907013-a95f4e9f-fd44-4471-9105-d161bdc5ec47.png)
 
 - Which URL do you navigate to in order to check that the ELK server is running? http://20.225.56.168:5601/app/kibana, http://[your_elk_server_ip];5601/app/kibana  
