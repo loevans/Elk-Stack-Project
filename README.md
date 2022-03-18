@@ -10,7 +10,7 @@ These files have been tested and used to generate a live ELK deployment on Azure
   - [install-elk.yml](https://github.com/loevans/Elk-Stack-Project/Ansible/install-elk.yml.txt)
   - [filebeat-playbook.yml](https://github.com/loevans/Elk-Stack-Project/Ansible/filebeat-playbook.yml.txt)
   - [metricbeat-playbook.yml](https://github.com/loevans/Elk-Stack-Project/Ansible/metricbeat-playbook.yml.txt)
-  - [pentest.yml](https://github.com/loevans/Elk-Stack-Project/Ansible/pentest.yml.txt)
+ 
 
 This document contains the following details:
 - Description of the Topologu
@@ -52,7 +52,7 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jump Box Provisioner machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- Add whitelisted IP addresses: personal IP address 108.52.143.94
+- Add whitelisted IP addresses: 52.186.16.122
 
 Machines within the network can only be accessed by SSH by the Jump Box.
 - Which machine did you allow to access your ELK VM? Jump Box Provisioner
@@ -62,10 +62,10 @@ A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes                 | personal 108.52.143.94|
-| Web1     | No                  | 10.0.0.7              |
-| Web2     | No                  | 10.0.0.7              |
-| Elk      | No                  | 10.0.0.7              |
+| Jump Box | Yes                 | 52.186.16.122        |
+| Web1     | No                  |                      |
+| Web2     | No                  |                      |
+| Elk      | Yes                 | 20.225.56.168        |
 
 
 ### Elk Configuration
@@ -74,8 +74,7 @@ Ansible was used to automate configuration of the ELK machine. No configuration 
 
 - What is the main advantage of automating configuration with Ansible? The main advantage of automating configuration with Ansible is to simplify complex tasks that can be time consuming. Ansible is simple, powerful and agentless.
 
-The playbook implements the following tasks:
-- In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc.
+The playbook implements the following tasks: In 3-5 bullets, explain the steps of the ELK installation play. E.g., install Docker; download image; etc.
 - Install docker.io: Installs the core docker code to the remote server
 - Install python3-pip: pip is the standard packet management system for Python
 - Docker Module: Tells the previous PIP module to install the necessary docker compenent modules.
@@ -83,52 +82,60 @@ The playbook implements the following tasks:
 - Download and launch a docker elk container: This downloads the docker container for ELK
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-![docker_ps_output](https://user-images.githubusercontent.com/93744925/158876872-4d83fb23-0b2b-4ed9-ae51-3b6bb5f6f051.png)
+![docker_ps_output](https://user-images.githubusercontent.com/93744925/158907704-b3721aad-be67-452b-be67-fe9d8a6ad1bf.png)
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- List the IP addresses of the machines you are monitoring?
+
 -   10.0.0.8
 -   10.0.0.9
 -   10.1.0.5
 
 We have installed the following Beats on these machines:
-- Specify which Beats you successfully installed
--⦁	Filebeat
--⦁	Metricbeat
 
+-	Filebeat
+-	Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc. Filebeat collects log files and logs information including any changes made and when.  Any attack leaves a trace that can be followed and investigated using logs. Metricbeat collects machine metrics such as CPU or memeory or data related to services running on the server.
+
+- Filebeat collects log files and logs information including any changes made and when.  Any attack leaves a trace that can be followed and investigated using logs.
+- Metricbeat collects machine metrics such as CPU or memeory or data related to services running on the server.
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the playbook file to /etc/ansible/roles.
-- Update the configuration /etc/ansible/files/filebeat-conf.yml file to include the private IP address of the Elk VM. Update the metricbeat configuration file with the same IP address of the ELK VM.
-
+- Copy the playbook file to /etc/ansible/roles/.
+- Update the configuration file /etc/ansible/files/filebeat-conf.yml file to include the private IP address of the Elk VM. Update the metricbeat configuration file with the same IP address of the ELK VM.
 - Run the playbook, and navigate to http://[your_elk_server_ip];5601/app/kibana to check that the installation worked as expected.
 
-_ Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Playbooks always carry the .yml extension and begin with --- on the first line to signify that it is a YAML file. Where do you copy it?
-- Copy the YAML file to /etc/ansible/roles/filebeat-playbook.yml
-- Copy the YAML file to /etc/ansible/roles/metricbeat-playbook.yml
+_ Answer the following questions to fill in the blanks:
+- Which file is the playbook? Playbooks always carry the .yml extension and begin with --- on the first line to signify that it is a YAML file.
+- Where do you copy it? Copy to /etc/ansible/roles/.
 
-- _Which file do you update to make Ansible run the playbook on a specific machine? You would update the /etc/ansible/hosts file. How do I specify which machine to install the ELK server on versus which to install Filebeat on? You would specify which machine to install by assigning a group [elk] or [webservers] and updating with IP addresses of webservers and elk servers to update the hosts file.
+- Which file do you update to make Ansible run the playbook on a specific machine? You would update the /etc/ansible/hosts file. How do I specify which machine to install the ELK server on versus which to install Filebeat on? You would specify which machine to install by assigning a group [elk] or [webservers] and updating with IP addresses of webservers and elk servers to update the hosts file.
+-![image](https://user-images.githubusercontent.com/93744925/158907013-a95f4e9f-fd44-4471-9105-d161bdc5ec47.png)
 
 - Which URL do you navigate to in order to check that the ELK server is running? http://20.225.56.168:5601/app/kibana, http://[your_elk_server_ip];5601/app/kibana  
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
+
 ⦁	run and copy the playbook: run curl https://github.com/loevans/Elk-Stack-Project/blob/main/Ansible/install-elk.yml > /etc/ansible/roles/install-elk-yml
-⦁	Update the hosts file: nano /etc/ansible/hosts and assign a [group] and updating your destination IP address. 
+
+⦁	Update the hosts file: nano /etc/ansible/hosts and assign a [group] and updating your destination IP address.
+
 ⦁	Run the playbook using the command: ansible-playbook /etc/ansible/roles/install-elk.yml
 ⦁	Check your installation is running by going to http://[your_elk_server_ip];5601/app/kibana in a browser. Your output should be similar to: 
 ![kibana](https://user-images.githubusercontent.com/93744925/158880291-30393591-5b2d-41d6-bdbe-409be5cae9aa.PNG)
+
 ⦁	Install Filbeats:	 Download the playbook with the following command: curl https://github.com/loevans/Elk-Stack-Project/blob/main/Ansible/filebeat-playbook.yml > /etc/ansible/roles/filebeat-playbook.yml
+
 ⦁	Run the playbook using the command: ansible-playbook /etc/ansible/roles/filebeat-playbook.yml
+
 ⦁	Repeat these steps for Metricbeat setup. 
+
 ⦁	click on Getting started, click on DEB and then scroll down and click on Module status.  Click on System logs dhashboard and you should see the following information:
+
 ![kibana_system_log_data](https://user-images.githubusercontent.com/93744925/158880414-07d6ca44-0cbd-417c-9c88-7d6402c47c63.PNG)
 
 
