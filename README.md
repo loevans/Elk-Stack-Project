@@ -121,7 +121,7 @@ Answer the following questions to fill in the blanks:
 
 - Which file do you update to make Ansible run the playbook on a specific machine? You would update the /etc/ansible/hosts file. How do I specify which machine to install the ELK server on versus which to install Filebeat on? You would specify which machine to install by assigning a group [elk] or [webservers] and updating with IP addresses of webservers and elk servers to update the hosts file.
 
--![Images/docker_ps_output.png](https://github.com/loevans/Elk-Stack-Project/blob/main/Images/docker_ps_output.png)
+-![Images/hosts.PNG](https://github.com/loevans/Elk-Stack-Project/blob/main/Images/hosts.PNG)
 
 - Which URL do you navigate to in order to check that the ELK server is running? http://20.225.56.168:5601/app/kibana, http://[your_elk_server_ip];5601/app/kibana  
 
