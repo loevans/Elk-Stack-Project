@@ -143,7 +143,7 @@ _As a **Bonus**, provide the specific commands the user will need to run to down
 
 ⦁	click on Getting started, click on DEB and then scroll down and click on Module status.  Click on System logs dhashboard and you should see the following information:
 
-![kibana_system_log_data](https://user-images.githubusercontent.com/93744925/158880414-07d6ca44-0cbd-417c-9c88-7d6402c47c63.PNG)
+![Images/kibana_system_log_data.PNG](https://github.com/loevans/Elk-Stack-Project/blob/main/Images/kibana_system_log_data.PNG)
 
 
 
