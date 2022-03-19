@@ -133,7 +133,7 @@ _As a **Bonus**, provide the specific commands the user will need to run to down
 
 ⦁	Run the playbook using the command: ansible-playbook /etc/ansible/roles/install-elk.yml
 ⦁	Check your installation is running by going to http://[your_elk_server_ip];5601/app/kibana in a browser. Your output should be similar to: 
-![kibana](https://user-images.githubusercontent.com/93744925/158880291-30393591-5b2d-41d6-bdbe-409be5cae9aa.PNG)
+![Images/kibana.PNG](https://github.com/loevans/Elk-Stack-Project/blob/main/Images/kibana.PNG)
 
 ⦁	Install Filbeats:	 Download the playbook with the following command: curl https://github.com/loevans/Elk-Stack-Project/blob/main/Ansible/filebeat-playbook.yml > /etc/ansible/roles/filebeat-playbook.yml
 
