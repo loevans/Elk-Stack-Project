@@ -69,7 +69,7 @@ have achieved the same set up by installing a database, installing a web server 
 can be a time consuming process.
 
     - What are the advantages to doing it without containers?
-There can be advantages of doing it without containers, foir example, if you need a boost in speed, if you need to use different operating systems or kernals or if you
+There can be advantages of doing it without containers, for example, if you need a boost in speed, if you need to use different operating systems or kernals or if you
 have a lot of valuable data to store. Security could also be a factor in determing a setup.  All containers share access to a single host OS and promise improved
 security, therefore, any malicious code can get access to your computer memeory. 
 
